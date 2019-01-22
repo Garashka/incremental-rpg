@@ -3,6 +3,7 @@
         <div class="button" @click="killPlayer">Kill Player</div>
         <div class="button" @click="restorePlayer">Restore Player</div>
         <div class="button" @click="addGold">Add Gold</div>
+        <div class="button" @click="logPlayer">Log Player</div>
     </div>
 </template>
 
@@ -18,6 +19,9 @@ export default {
     },
     addGold() {
       this.$store.commit('actor/modifyGold', { delta: 99999 });
+    },
+    logPlayer() {
+      console.log(this.$store.state.actor);
     },
   },
 };

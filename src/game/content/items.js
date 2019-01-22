@@ -8,11 +8,13 @@ import { itemEffects } from './effects';
 // unless can work out how to add them back when rehydrating)
 
 class Item {
-  constructor(dict) {
+  constructor(dict, equipped = false) {
     this.name = dict.name;
     this.description = dict.description;
     this.cost = dict.cost;
     this.stats = dict.stats;
+    this.slot = dict.slot;
+    this.equipped = equipped;
     if (dict.enhancements) {
       this.enhancements = dict.enhancements;
     } else {
@@ -57,6 +59,7 @@ const weapons = {
   wpn_pitchfork: {
     name: 'Pitchfork',
     description: "Pitchfork Emporium's Finest",
+    slot: 'mainhand',
     stats: {
       basePhysicalDamage: 4,
     },
@@ -65,6 +68,7 @@ const weapons = {
   wpn_short_sword: {
     name: 'Short Sword',
     description: 'A simple but functional weapon',
+    slot: 'mainhand',
     stats: {
       basePhysicalDamage: 10,
     },
@@ -73,6 +77,7 @@ const weapons = {
   wpn_simple_staff: {
     name: 'Simple Staff',
     description: 'A simple but functional weapon',
+    slot: 'mainhand',
     stats: {
       basePhysicalDamage: 2,
       baseMagicDamage: 3,
@@ -85,6 +90,7 @@ const armour = {
   arm_simple_robe: {
     name: 'Simple Robe',
     description: '',
+    slot: 'body',
     stats: {
       basePhysicalDefence: 1,
       baseMagicDefence: 2,
@@ -94,6 +100,7 @@ const armour = {
   arm_leather_armour: {
     name: 'Leather Armour',
     description: '',
+    slot: 'body',
     stats: {
       basePhysicalDefence: 2,
       baseMagicDefence: 1,
@@ -103,6 +110,7 @@ const armour = {
   arm_iron_chainmail: {
     name: 'Iron Chainmail',
     description: '',
+    slot: 'body',
     stats: {
       basePhysicalDefence: 4,
       baseMagicDefence: 1,
@@ -115,6 +123,7 @@ const companions = {
   pet_wayfarer_dog: {
     name: 'Faithful Hound',
     description: 'The loyalest of dogs',
+    slot: 'pet',
     baseBamage: 10,
     cost: null, // Cannot be purchased
     behaviour: {

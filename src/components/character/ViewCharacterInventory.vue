@@ -21,6 +21,9 @@ export default {
   },
   methods: {
     itemName(item) {
+      if (this.isEquipped(item)) {
+        return `${item.name} (e)`;
+      } 
       return item.name;
     },
     itemDescription(item) {
@@ -33,6 +36,9 @@ export default {
         output.push(`${dict[key]}: ${val}`);
       });
       return output;
+    },
+    isEquipped(item) {
+      return item.equipped;
     },
   },
 };
