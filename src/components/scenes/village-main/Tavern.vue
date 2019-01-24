@@ -18,13 +18,14 @@ Part of bard unlock
 <script>
 import EventTemplate from "../../template-views/EventTemplate.vue";
 import statusMixins from "../../../mixins/status";
+import navigationMixins from "../../../mixins/navigation";
 import events from "../../../game/content/events";
 
 export default {
   components: {
     EventTemplate
   },
-  mixins: [statusMixins],
+  mixins: [statusMixins, navigationMixins],
   data() {
     return {
       id: "Tavern"
@@ -60,6 +61,7 @@ export default {
     },
     endEvent() {
       this.$store.commit("endEvent");
+      this.setLocation(this.$store.state.previousLocation);
     }
   },
   created() {}

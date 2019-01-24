@@ -35,6 +35,7 @@ function initialState() {
     neighbouringLocations: [],
     currentBattle: currentBattle(),
     renderedTemplate: 'CharacterCreation',
+    previousLocation: '',
     currentLocation: 'IntroRoad',
   };
 }
@@ -56,6 +57,7 @@ export default new Vuex.Store({
       currentEvent: '',
     },
     renderedTemplate: 'CharacterCreation',
+    previousLocation: 'IntroRoad',
     currentLocation: 'IntroRoad',
   },
   getters: {
@@ -132,6 +134,7 @@ export default new Vuex.Store({
       state.renderedTemplate = template;
     },
     setCurrentLocation(state, location) {
+      state.previousLocation = state.currentLocation;
       state.currentLocation = location;
     },
   },
