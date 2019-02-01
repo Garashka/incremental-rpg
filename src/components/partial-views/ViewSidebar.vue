@@ -1,11 +1,13 @@
 <template>
     <div id="sidebar" class="noSelect">
-        <div class="sidebar-clickable"
-          v-if="inBattle === false && inOptions === false && charCreated === true"
-          v-for='(location, key) in neighbouringLocations'
-          :key='key'
-          @click="setLocation(location)">
-          {{ locationName(location) }}
+        <div
+          v-if="inBattle === false && inOptions === false && charCreated === true">
+          <div class="sidebar-clickable"
+            v-for='(location, key) in neighbouringLocations'
+            :key='key'
+            @click="setLocation(location)">
+            {{ locationName(location) }}
+          </div>
         </div>
         <div class="sidebar-clickable"
           v-if="inOptions === true"

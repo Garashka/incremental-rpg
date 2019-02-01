@@ -1,3 +1,5 @@
+<!-- TODO: Split between different item types in inventory -->
+
 <template>
     <div>
         <p v-for="(item, index) in inventory" :key="index">

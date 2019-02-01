@@ -126,6 +126,7 @@ const mutations = {
       const item = newItem(val);
       state.inventory.push(item);
       if (classData.defaultEquippedWeapons.includes(val)) {
+        item.equipped = true;
         state.party[props.index].equippedWeapons.push(item);
       }
     });
