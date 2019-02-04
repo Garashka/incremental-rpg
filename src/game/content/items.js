@@ -20,6 +20,9 @@ class Item {
     } else {
       this.enhancements = {};
     }
+    if (dict.essential) {
+      this.essential = dict.essential;
+    } else this.essential = false;
 
     // Stats refers to item's inherent modifiers
     // Effects refers to extra stats added after acquiring
@@ -69,6 +72,7 @@ const weapons = {
     name: 'Short Sword',
     description: 'A simple but functional weapon',
     slot: 'mainhand',
+    essential: true,
     stats: {
       basePhysicalDamage: 10,
     },
