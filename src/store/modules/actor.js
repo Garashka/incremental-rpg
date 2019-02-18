@@ -1,6 +1,6 @@
 import each from 'lodash/each';
 import { tacticTemplate } from '../../game/content/tactics';
-import characterModel from '../../game/models/character';
+import characterModel from '../../models/character';
 import characterClasses from '../../game/content/classes';
 import items, { newItem, addEnhancement } from '../../game/content/items';
 

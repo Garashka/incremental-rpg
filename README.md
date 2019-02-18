@@ -58,3 +58,5 @@ npm run lint
 https://alligator.io/vuejs/dynamic-components/
 https://vuejs.org/v2/guide/single-file-components.html
 https://markus.oberlehner.net/blog/form-fields-two-way-data-binding-and-vuex/
+https://markus.oberlehner.net/blog/how-to-structure-a-complex-vuex-store/
+https://www.smashingmagazine.com/2018/12/multiplayer-text-adventure-engine-node-js/

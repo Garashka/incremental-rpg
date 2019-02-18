@@ -8,9 +8,9 @@
       {{line}}
       <br :key="index">
     </template>
-    <div class="button-inventory" v-if="isEquipped">Equip</div>
-    <div class="button-inventory" v-else>Unequip</div>
-    <div class="button-inventory" :class="{essential: !isEssential}">Drop</div>
+    <div class="button-inventory noSelect" v-if="isEquipped" @click="equip">Equip</div>
+    <div class="button-inventory noSelect" v-else @click="unequip">Unequip</div>
+    <div class="button-inventory noSelect" :class="{essential: !isEssential}" @click="dispose">Drop</div>
   </div>
 </template>
 
@@ -44,20 +44,20 @@ export default {
     isEssential(item) {
       return item.essential;
     },
-    equip(item) {
+    equip() {
         // Sanity check not equipped
-        console.log(`TODO: Equip ${item.name}`);
+        console.log(`TODO: Equip ${this.item.name}`);
     },
-    unequip(item) {
+    unequip() {
         // Sanity check is equipped
-        console.log(`TODO: Unequip ${item.name}`);
+        console.log(`TODO: Unequip ${this.item.name}`);
     },
-    dispose(item) {
+    dispose() {
       // Sanity check item should allowed to dispose
-      if (item.essential == false) {
-        console.log(`TODO: Dispose ${item.name}`);
+      if (this.item.essential == false) {
+        console.log(`TODO: Dispose ${this.item.name}`);
       } else {
-        console.log(`Cannot dispose of ${item.name} - marked as essential`);
+        console.log(`Cannot dispose of ${this.item.name} - marked as essential`);
       }
     }
   }
