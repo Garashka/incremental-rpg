@@ -4,8 +4,6 @@
     <div>
         <p v-for="(item, index) in inventory" :key="index">
           <ItemTemplate :item="item"></ItemTemplate>
-          <div class="button">Equip</div>
-          <div class="button">Drop</div>
         </p>
     </div>
 </template>
