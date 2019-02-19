@@ -4,8 +4,8 @@
 
 <script>
 import each from "lodash/each";
-import { tacticTargets, tacticConditions } from "../../game/content/tactics";
-import skills from "../../game/content/skills";
+import { tacticTargets, tacticConditions } from "../../data/content/tactics";
+import skills from "../../data/content/skills";
 
 export default {
   props: {

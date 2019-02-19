@@ -5,7 +5,7 @@ import VuexPersist from 'vuex-persist';
 import actor from './modules/actor';
 import locations from './modules/locations';
 
-import enemies from '../game/content/enemies';
+import enemies from '../data/content/enemies';
 
 Vue.use(Vuex);
 

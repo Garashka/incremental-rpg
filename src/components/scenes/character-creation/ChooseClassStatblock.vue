@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import skills from '../../../game/content/skills.js';
-import items from '../../../game/content/items.js';
+import skills from '../../../data/content/skills.js';
+import items from '../../../data/content/items.js';
 
 export default {
   data() {

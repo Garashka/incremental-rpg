@@ -16,7 +16,7 @@
 <script>
 import each from 'lodash/each';
 import ShopItem from './ShopTemplateItem.vue';
-import items from '../../game/content/items';
+import items from '../../data/content/items';
 
 export default {
   components: {

@@ -13,7 +13,7 @@
 <script>
 import ViewBattle from "../../partial-views/ViewBattle.vue";
 import EventTemplate from "../../template-views/EventTemplate.vue";
-import enemies from "../../../game/content/enemies";
+import enemies from "../../../data/content/enemies";
 import statusMixins from "../../../mixins/status";
 import navMixins from '../../../mixins/navigation'
 

@@ -43,7 +43,7 @@ import VictoryButton from './VictoryButton.vue';
 import DefeatButton from './DefeatButton.vue';
 import statusMixins from '../../mixins/status.js';
 import { mapState } from 'vuex';
-import { takeBattleTurn } from '../../game/content/enemies';
+import { takeBattleTurn } from '../../data/content/enemies';
 
 export default {
   components: {

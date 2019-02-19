@@ -17,8 +17,8 @@
 <script>
 import each from 'lodash/each';
 import cloneDeep from 'lodash/cloneDeep';
-import dict from '../../game/content/dictionary';
-import { newItem } from '../../game/content/items';
+import dict from '../../data/content/dictionary';
+import { newItem } from '../../data/content/items';
 
 export default {
   props: {

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import skills from '../../game/content/skills';
+import skills from '../../data/content/skills';
 
 export default {
   data() {

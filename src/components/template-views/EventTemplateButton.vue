@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { itemEffects } from "../../game/content/effects";
-import items, { totalWeaponDamage } from "../../game/content/items";
+import { itemEffects } from "../../data/content/effects";
+import items, { totalWeaponDamage } from "../../data/content/items";
 import inventoryMixins from '../../mixins/inventory';
 
 export default {

@@ -40,8 +40,8 @@
 import each from 'lodash/each';
 // https://vuex.vuejs.org/guide/forms.html
 // https://vuejs.org/v2/guide/forms.html
-import skills from '../../game/content/skills';
-import { tacticTargets, tacticConditions } from '../../game/content/tactics';
+import skills from '../../data/content/skills';
+import { tacticTargets, tacticConditions } from '../../data/content/tactics';
 
 export default {
   props: ['tactic', 'selectedCharacter'],

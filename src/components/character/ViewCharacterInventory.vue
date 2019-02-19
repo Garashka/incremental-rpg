@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import items from '../../game/content/items';
+import items from '../../data/content/items';
 import ItemTemplate from './ViewCharacterInventoryItem';
 
 export default {

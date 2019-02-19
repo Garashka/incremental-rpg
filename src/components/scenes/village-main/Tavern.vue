@@ -19,7 +19,7 @@ Part of bard unlock
 import EventTemplate from "../../template-views/EventTemplate.vue";
 import statusMixins from "../../../mixins/status";
 import navigationMixins from "../../../mixins/navigation";
-import events from "../../../game/content/events";
+import events from "../../../data/content/events";
 
 export default {
   components: {

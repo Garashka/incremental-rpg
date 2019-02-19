@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import events from '../../game/content/events';
+import events from '../../data/content/events';
 import Button from './EventTemplateButton.vue';
 
 export default {

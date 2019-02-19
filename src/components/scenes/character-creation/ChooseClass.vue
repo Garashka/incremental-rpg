@@ -17,7 +17,7 @@
 
 <script>
 import ClassStatblock from './ChooseClassStatblock.vue';
-import characterClasses from '../../../game/content/classes.js';
+import characterClasses from '../../../data/content/classes.js';
 
 export default {
   data() {

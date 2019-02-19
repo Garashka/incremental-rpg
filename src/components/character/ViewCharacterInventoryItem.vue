@@ -16,7 +16,7 @@
 
 <script>
 import each from 'lodash/each';
-import dict from '../../game/content/dictionary';
+import dict from '../../data/content/dictionary';
 
 export default {
   props: ['item'],

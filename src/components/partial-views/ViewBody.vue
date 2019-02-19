@@ -16,7 +16,7 @@ import Forest from "../scenes/wild/Forest.vue";
 import Tavern from "../scenes/village-main/Tavern.vue";
 import Healer from "../scenes/village-main/Healer.vue";
 import Monastery from "../scenes/village-main/Monastery.vue";
-import events from '../../game/content/events';
+import events from '../../data/content/events';
 import statusMixins from '../../mixins/status';
 
 export default {

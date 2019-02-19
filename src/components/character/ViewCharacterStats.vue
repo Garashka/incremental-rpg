@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import klass from '../../game/content/classes';
+import klass from '../../data/content/classes';
 
 export default {
   data() {

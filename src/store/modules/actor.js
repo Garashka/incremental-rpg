@@ -1,8 +1,8 @@
 import each from 'lodash/each';
-import { tacticTemplate } from '../../game/content/tactics';
+import { tacticTemplate } from '../../data/content/tactics';
 import characterModel from '../../models/character';
-import characterClasses from '../../game/content/classes';
-import items, { newItem, addEnhancement } from '../../game/content/items';
+import characterClasses from '../../data/content/classes';
+import items, { newItem, addEnhancement } from '../../data/content/items';
 
 // TODO: Make PC array position 0 in party and add a flag for pc == true
 // Should make it easier to update character data
