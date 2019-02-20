@@ -18,7 +18,6 @@
 import each from 'lodash/each';
 import cloneDeep from 'lodash/cloneDeep';
 import dict from '../../data/content/dictionary';
-import { newItem } from '../../data/content/items';
 
 export default {
   props: {
@@ -41,7 +40,6 @@ export default {
   methods: {
     buyItem() {
       if (this.canAfford) {
-        const item = newItem(this.itemData);
         this.$store.commit('actor/addToInventory', item);
         this.$store.commit('actor/modifyGold', { delta: -this.itemData.cost });
       }

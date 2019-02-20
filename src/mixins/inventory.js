@@ -27,7 +27,7 @@ export default {
               });
               break;
             default:
-              console.log(`Unknown gain target type: ${this.buttonData.gain.target}` );
+              console.log(`Unknown gain target type: ${this.buttonData.gain.target}`);
               break;
           }
           break;

@@ -6,7 +6,7 @@
         Starting Equipment:<br/>
         <ul>
             <li v-for="(value, key) in klass.inventory" v-bind:key="key">
-                {{ items[value].name }}
+                {{ findItemByID(value) }}
             </li>
         </ul>
         <br/>
@@ -22,13 +22,12 @@
 
 <script>
 import skills from '../../../data/content/skills.js';
-import items from '../../../data/content/items.js';
+import { findItemByID } from '../../../data/utilities/items';
 
 export default {
   data() {
     return {
       skills,
-      items,
     };
   },
   props: ['klass', 'id'],
@@ -37,6 +36,11 @@ export default {
       this.$emit('selected', id);
     },
   },
+  computed: {
+    getItemData(id) {
+      return findItemByID(id);
+    },
+  }
 };
 </script>
 
