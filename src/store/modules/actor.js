@@ -2,6 +2,8 @@ import each from 'lodash/each';
 import { tacticTemplate } from '../../data/content/tactics';
 import characterModel from '../../data/models/character';
 import characterClasses from '../../data/content/classes';
+import { Item } from '../../data/models/item';
+import { allItems } from '../../data/content/items/index'
 
 // TODO: Make PC array position 0 in party and add a flag for pc == true
 // Should make it easier to update character data
@@ -84,11 +86,14 @@ const mutations = {
     state.renown += props.delta;
   },
 
-  addToInventory(state, item, equip = false) {
-    if (equip === true) {
-      // TODO
-    }
-    state.inventory.push(item);
+  addToInventory(state, itemKey, equip = false) {
+    // if (equip === true) {
+    //   // TODO
+    // }
+    // state.inventory.push(item);
+    let data = allItems.find(i => i.id == itemKey);
+    let item = new Item(data);
+    inventory.push(item);
   },
 
   addTactic(state, props) {
@@ -122,12 +127,18 @@ const mutations = {
     state.party[props.index].statGrowth = classData.statGrowth;
 
     each(classData.inventory, (val) => {
-      const item = newItem(val);
-      state.inventory.push(item);
+      let equipped;
       if (classData.defaultEquippedWeapons.includes(val)) {
-        item.equipped = true;
-        state.party[props.index].equippedWeapons.push(item);
-      }
+        equipped = true;
+      } else equipped = false;
+      state.addToInventory(val, equipped);
+
+      // const item = Item(findByID(val));
+      // state.inventory.push(item);
+      // if (classData.defaultEquippedWeapons.includes(val)) {
+      //   item.equipped = true;
+      //   state.party[props.index].equippedWeapons.push(item);
+      // }
     });
 
     state.party[props.index].availableSkills =

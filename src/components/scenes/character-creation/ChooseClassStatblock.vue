@@ -6,7 +6,7 @@
         Starting Equipment:<br/>
         <ul>
             <li v-for="(value, key) in klass.inventory" v-bind:key="key">
-                {{ findItemByID(value) }}
+                {{ findItemByID(value).name }}
             </li>
         </ul>
         <br/>
@@ -22,9 +22,10 @@
 
 <script>
 import skills from '../../../data/content/skills.js';
-import { findItemByID } from '../../../data/utilities/items';
+import itemMixins from '../../../mixins/items.js';
 
 export default {
+  mixins: [itemMixins],
   data() {
     return {
       skills,

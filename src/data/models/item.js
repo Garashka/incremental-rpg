@@ -3,7 +3,7 @@ const uuid = require('uuid/v4');
 class Item {
   constructor(dict, equipped = false) {
     this.id = dict.id;
-    this.uuid = uuid();
+    this.uuid = dict.uuid || uuid();
     this.name = dict.name || `TODO: Name missing from ${id}`;
     this.description = dict.description || `TODO: Description missing from ${id}`;
 
@@ -13,7 +13,7 @@ class Item {
     this.canEquip = dict.canEquip || false;
     this.stats = dict.stats;
 
-    this.equipped = equipped;
+    this.equipped = dict.equipped || equipped;
     if (dict.enhancements) {
       this.enhancements = dict.enhancements;
     } else this.enhancements = {};
