@@ -1,26 +1,13 @@
-const uuid = require('uuid/v4');
+import uuid from 'uuid/v4';
 
-class Item {
-  constructor(dict, equipped = false) {
-    this.id = dict.id;
-    this.uuid = dict.uuid || uuid();
-    this.name = dict.name || `TODO: Name missing from ${id}`;
-    this.description = dict.description || `TODO: Description missing from ${id}`;
-
-    this.type = dict.type;
-    this.slot = dict.slot || `TODO: No slot type for ${id}`;
-    this.price = dict.price;
-    this.canEquip = dict.canEquip || false;
-    this.stats = dict.stats;
-
-    this.equipped = dict.equipped || equipped;
-    if (dict.enhancements) {
-      this.enhancements = dict.enhancements;
-    } else this.enhancements = {};
-    if (dict.essential) {
-      this.essential = dict.essential;
-    } else this.essential = false;
-  }
+export default function ItemInstance(dict) {
+  let item = {};
+  item.id = dict.id;
+  item.uuid = dict.uuid || uuid();
+  
+  if (dict.essential) {
+    item.essential = dict.essential;
+  } else item.essential = false;
+  return item;
 }
 
-module.exports = Item;

@@ -16,10 +16,10 @@
 <script>
 import each from 'lodash/each';
 import ShopItem from './ShopTemplateItem.vue';
-import items from '../../data/content/items';
-import itemUtils from '../../data/utilities/items';
+import itemMixins from '../../mixins/items';
 
 export default {
+  mixins: [itemMixins],
   components: {
     ShopItem,
   },
@@ -32,7 +32,7 @@ export default {
     shopInventory() {
       const inventory = [];
       each(this.shopData.inventory, (item) => {
-        inventory.push(items[item]);
+        inventory.push(this.findItemByID(item));
       });
       return inventory;
     },

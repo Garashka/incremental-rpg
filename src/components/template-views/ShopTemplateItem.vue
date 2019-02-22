@@ -26,13 +26,15 @@ export default {
   computed: {
     weaponStats() {
       const output = [];
-      each(this.itemData.stats, (value, key) => {
-        output.push(`${dict[key]}: ${value}`);
+      each(this.itemData.stats, (subobj, statType) => {
+        each(subobj, (statVal, stat) => {
+        output.push(`${dict[stat]} ${dict[statType]}: ${statVal}`);
+        })
       });
       return output;
     },
     canAfford() {
-      if (this.itemData.cost <= this.$store.state.actor.gold) {
+      if (this.itemData.price <= this.$store.state.actor.gold) {
         return true;
       } return false;
     },
@@ -40,8 +42,8 @@ export default {
   methods: {
     buyItem() {
       if (this.canAfford) {
-        this.$store.commit('actor/addToInventory', item);
-        this.$store.commit('actor/modifyGold', { delta: -this.itemData.cost });
+        this.$store.commit('actor/addToInventory', this.itemData.id);
+        this.$store.commit('actor/modifyGold', { delta: -this.itemData.price });
       }
     },
   },

@@ -1,6 +1,10 @@
 export default {
-  basePhysicalDamage: 'Physical Damage',
-  baseMagicDamage: 'Magic Damage',
-  basePhysicalDefence: 'Physical Defence',
-  baseMagicDefence: 'Magical Defence',
+  attack: 'Attack',
+  physical: 'Physical',
+  defence: 'Defence',
+  magical: 'Magical',
+  basePhysicalDamage: 'change this',
+  baseMagicDamage: 'change this',
+  basePhysicalDefence: 'change this',
+  baseMagicDefence: 'change this',
 };
