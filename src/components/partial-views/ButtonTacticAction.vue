@@ -5,7 +5,7 @@
 <script>
 import each from "lodash/each";
 import { tacticTargets, tacticConditions } from "../../data/content/tactics";
-import skills from "../../data/content/skills";
+import skills from "../../data/content/skills/index";
 
 export default {
   props: {

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <b>{{itemName(item)}}</b>
+    <b>{{itemName()}}</b>
     <br>
-    {{itemDescription(item)}}
+    {{itemDescription()}}
     <br>
-    <template v-for="(line, index) in itemStats(item)">
+    <template v-for="(line, index) in itemStats">
       {{line}}
       <br :key="index">
     </template>
@@ -17,26 +17,25 @@
 <script>
 import each from 'lodash/each';
 import dict from '../../data/content/dictionary';
+import itemMixins from '../../mixins/items'
 
 export default {
+  mixins: [itemMixins],
   props: ['item'],
+  data() {
+    return {
+      itemData: this.findItemByID(this.item.id),
+    };
+  },
   methods: {
-    itemName(item) {
-      if (this.isEquipped(item)) {
-        return `${item.name} (e)`;
+    itemName() {
+      if (this.isEquipped(this.item)) {
+        return `${this.itemData.name} (e)`;
       }
-      return item.name;
+      return this.itemData.name;
     },
-    itemDescription(item) {
-      return item.description;
-    },
-    itemStats(item) {
-      const stats = item.stats;
-      const output = [];
-      each(stats, (val, key) => {
-        output.push(`${dict[key]}: ${val}`);
-      });
-      return output;
+    itemDescription() {
+      return this.itemData.description;
     },
     isEquipped(item) {
       return item.equipped;
@@ -46,18 +45,18 @@ export default {
     },
     equip() {
         // Sanity check not equipped
-        console.log(`TODO: Equip ${this.item.name}`);
+        console.log(`TODO: Equip ${this.itemData.name}`);
     },
     unequip() {
         // Sanity check is equipped
-        console.log(`TODO: Unequip ${this.item.name}`);
+        console.log(`TODO: Unequip ${this.itemData.name}`);
     },
     dispose() {
       // Sanity check item should allowed to dispose
       if (this.item.essential == false) {
-        console.log(`TODO: Dispose ${this.item.name}`);
+        console.log(`TODO: Dispose ${this.itemData.name}`);
       } else {
-        console.log(`Cannot dispose of ${this.item.name} - marked as essential`);
+        console.log(`Cannot dispose of ${this.itemData.name} - marked as essential`);
       }
     }
   }

@@ -10,7 +10,7 @@
 <script>
 // To make skills not care about if caster is party or pc we may need to make the store
 // Hold PC and party data in an object and access by key
-import skills from "../../data/content/skills";
+import skills from "../../data/content/skills/index";
 
 export default {
   props: {

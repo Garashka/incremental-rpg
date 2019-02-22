@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import skills from '../../../data/content/skills.js';
+import skills from '../../../data/content/skills/index';
 import itemMixins from '../../../mixins/items.js';
 
 export default {

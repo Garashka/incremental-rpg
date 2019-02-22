@@ -1,7 +1,7 @@
 <template>
     <tr>
         <td>{{ itemData.name }}</td>
-        <td><p class="stat" v-for="(stat, idx) in weaponStats" :key="idx">{{ stat }}</p></td>
+        <td><p class="stat" v-for="(stat, idx) in itemStats" :key="idx">{{ stat }}</p></td>
         <td>{{ itemData.cost }}</td>
         <td>
             <div class="shopButton noSelect"
@@ -18,21 +18,14 @@
 import each from 'lodash/each';
 import cloneDeep from 'lodash/cloneDeep';
 import dict from '../../data/content/dictionary';
+import itemMixins from '../../mixins/items'
 
 export default {
+  mixins: [itemMixins],
   props: {
     itemData: Object,
   },
   computed: {
-    weaponStats() {
-      const output = [];
-      each(this.itemData.stats, (subobj, statType) => {
-        each(subobj, (statVal, stat) => {
-        output.push(`${dict[stat]} ${dict[statType]}: ${statVal}`);
-        })
-      });
-      return output;
-    },
     canAfford() {
       if (this.itemData.price <= this.$store.state.actor.gold) {
         return true;

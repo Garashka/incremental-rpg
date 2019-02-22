@@ -40,7 +40,7 @@
 import each from 'lodash/each';
 // https://vuex.vuejs.org/guide/forms.html
 // https://vuejs.org/v2/guide/forms.html
-import skills from '../../data/content/skills';
+import skills from '../../data/content/skills/index';
 import { tacticTargets, tacticConditions } from '../../data/content/tactics';
 
 export default {

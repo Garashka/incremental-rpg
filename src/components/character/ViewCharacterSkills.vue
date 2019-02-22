@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import skills from '../../data/content/skills';
+import skills from '../../data/content/skills/index';
 
 export default {
   data() {
