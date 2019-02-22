@@ -1,3 +1,5 @@
+import { calculateDamage } from './utilities';
+
 export default {
     soldier_pommelStrike: {
       name: 'Pommel Strike',

@@ -1,3 +1,5 @@
+import { calculateDamage } from './utilities';
+
 export default {
     hedge_blast: {
       name: 'Aether Blast',

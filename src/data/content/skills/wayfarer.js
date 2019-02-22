@@ -1,3 +1,5 @@
+import { calculateDamage } from './utilities';
+
 export default {
     wayfarer_houndMaul: {
         name: 'Maul',

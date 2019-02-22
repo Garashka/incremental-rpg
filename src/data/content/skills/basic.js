@@ -1,3 +1,5 @@
+import { calculateDamage } from './utilities';
+
 export default {
     basic_attack: {
       name: 'Attack',

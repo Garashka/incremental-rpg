@@ -1,3 +1,5 @@
+import { calculateDamage } from './utilities';
+
 export default {
     villager_throwSand: {
       name: 'Throw Sand',

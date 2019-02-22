@@ -11,7 +11,7 @@
         </div>
         <div class="sidebar-clickable"
           v-if="inOptions === true"
-          @click="returnToLast"
+          @click="exitOptions"
           >
           Return to {{ locationName(this.$store.state.currentLocation) }}
         </div>
