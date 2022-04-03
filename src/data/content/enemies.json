@@ -1,0 +1,41 @@
+[
+  {
+    "id": "lvl1_boar",
+    "name": "boar",
+    "description": "",
+    "level": 1,
+    "adjectives": ["bristly", "furry", "angry", "wild"],
+    "health": 100,
+    "minDmg": 8,
+    "maxDmg": 30,
+    "behaviour": {
+      "attack": 100
+    }
+  },
+  {
+    "id": "lvl1_wild_dog",
+    "name": "wild dog",
+    "description": "",
+    "level": 1,
+    "adjectives": ["angry", "feral", "mangy"],
+    "health": 60,
+    "minDmg": 12,
+    "maxDmg": 40,
+    "behaviour": {
+      "attack": 100
+    }
+  },
+  {
+    "id": "lvl1_large_rat",
+    "name": "large rat",
+    "description": "",
+    "level": 1,
+    "adjectives": ["friendly", "smelly", "aggressive"],
+    "health": 60,
+    "minDmg": 12,
+    "maxDmg": 40,
+    "behaviour": {
+      "attack": 100
+    }
+  }
+]

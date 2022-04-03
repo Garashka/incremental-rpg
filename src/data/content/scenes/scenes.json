@@ -1,0 +1,146 @@
+{
+  "passages": [
+    {
+      "text": "It's not a very large town, but it looks to be the trade hub for the local region. Several farmers have stalls to sell produce, and there's a smithy with several weapons on display - not common for a small town. There's also a tavern.\n\n[[Smithy->Smithy]]\n[[Tavern->Tavern]]\n[[Forest->Forest]]",
+      "links": [
+        {
+          "name": "Smithy",
+          "link": "Smithy",
+          "pid": "4"
+        },
+        {
+          "name": "Tavern",
+          "link": "Tavern",
+          "pid": "2"
+        },
+        {
+          "name": "Forest",
+          "link": "Forest",
+          "pid": "5"
+        }
+      ],
+      "cleanText": "It's not a very large town, but it looks to be the trade hub for the local region. Several farmers have stalls to sell produce, and there's a smithy with several weapons on display - not common for a small town. There's also a tavern.",
+      "name": "Town Center",
+      "pid": "1",
+      "position": {
+        "x": "1248",
+        "y": "364"
+      },
+      "tags": ["scene:common"]
+    },
+    {
+      "text": "It's too early for the place to be full, but there's still a few faces around.\n\nThe publican looks up from his chores waiting to see if you want something.\n\n[[Leave Tavern->Town Center]]",
+      "links": [
+        {
+          "name": "Leave Tavern",
+          "link": "Town Center",
+          "pid": "1"
+        }
+      ],
+      "cleanText": "It's too early for the place to be full, but there's still a few faces around.\n\nThe publican looks up from his chores waiting to see if you want something.",
+      "name": "Tavern",
+      "pid": "2",
+      "position": {
+        "x": "1101",
+        "y": "574"
+      }
+    },
+    {
+      "text": "As you come to your senses you look around. You are on an old dirt track, one end leads up a mountain and the other heads towards a town in the far distance.\n\nYou decide it's probably best to go to the village for now given you can barely remember your name.[[Continue to the Village->Town Center]]",
+      "links": [
+        {
+          "name": "Continue to the Village",
+          "link": "Town Center",
+          "pid": "1"
+        }
+      ],
+      "cleanText": "As you come to your senses you look around. You are on an old dirt track, one end leads up a mountain and the other heads towards a town in the far distance.\n\nYou decide it's probably best to go to the village for now given you can barely remember your name.",
+      "name": "Old Dirt Path",
+      "pid": "3",
+      "position": {
+        "x": "1252",
+        "y": "181"
+      },
+      "tags": ["id:intro", "scene:common"]
+    },
+    {
+      "text": "A smith hammers away at some crude iron while his apprentice works the forge. Noticing he has a customer, the smith lets out a piercing whistle and another apprentice comes in from a side room to serve you.\n\n[[Leave Store->Town Center]]",
+      "links": [
+        {
+          "name": "Leave Store",
+          "link": "Town Center",
+          "pid": "1"
+        }
+      ],
+      "cleanText": "A smith hammers away at some crude iron while his apprentice works the forge. Noticing he has a customer, the smith lets out a piercing whistle and another apprentice comes in from a side room to serve you.",
+      "name": "Smithy",
+      "pid": "4",
+      "position": {
+        "x": "1228",
+        "y": "575"
+      },
+      "tags": ["scene:shop", "shop:start_village_smithy"]
+    },
+    {
+      "text": "Deep in the forest, there's excitement to be found.\n\n[[Find a fight->Fight]]\n[[Go through the Woods->Mountain Pass]]\n[[Return to Village->Town Center]]",
+      "links": [
+        {
+          "name": "Find a fight",
+          "link": "Fight",
+          "pid": "7"
+        },
+        {
+          "name": "Go through the Woods",
+          "link": "Mountain Pass",
+          "pid": "6"
+        },
+        {
+          "name": "Return to Village",
+          "link": "Town Center",
+          "pid": "1"
+        }
+      ],
+      "cleanText": "Deep in the forest, there's excitement to be found.",
+      "name": "Forest",
+      "pid": "5",
+      "position": {
+        "x": "1357",
+        "y": "574"
+      },
+      "tags": ["scene:wilderness"]
+    },
+    {
+      "text": "A gruff fellow with the garb of an adventurer sits by an impromptu barricade, with a used halberd resting across his legs.\n\n\"Trying to get through the pass?\" he asks.\n\nWhen you nod your reply he sighs and says \"Sorry lad, can't let you through here. Bandits have taken up camp and are taking travellers for everything they have. The town's paid me and some mates to clear them out but until they get here I'm not to let anyone through who can't handle themselves.\"\n\nHe sizes you up... \"You're not quite there yet, I'm afraid.\"\n\n[[Return to Forest ->Forest]] ",
+      "links": [
+        {
+          "name": "Return to Forest ",
+          "link": "Forest",
+          "pid": "5"
+        }
+      ],
+      "cleanText": "A gruff fellow with the garb of an adventurer sits by an impromptu barricade, with a used halberd resting across his legs.\n\n\"Trying to get through the pass?\" he asks.\r\n\r\nWhen you nod your reply he sighs and says \"Sorry lad, can't let you through here. Bandits have taken up camp and are taking travellers for everything they have. The town's paid me and some mates to clear them out but until they get here I'm not to let anyone through who can't handle themselves.\"\n\nHe sizes you up... \"You're not quite there yet, I'm afraid.\"",
+      "name": "Mountain Pass",
+      "pid": "6",
+      "position": {
+        "x": "1524",
+        "y": "573"
+      }
+    },
+    {
+      "text": "Double-click this passage to edit it.",
+      "cleanText": "Double-click this passage to edit it.",
+      "name": "Fight",
+      "pid": "7",
+      "position": {
+        "x": "1351",
+        "y": "740"
+      },
+      "tags": ["scene:combat", "fight:start_village_forest"]
+    }
+  ],
+  "name": "village",
+  "startnode": "3",
+  "creator": "Twine",
+  "creator-version": "2.3.16",
+  "ifid": "6737DFBE-1E5F-4439-A6CE-A18471DB8184"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "wpn_pitchfork",
+    "name": "Pitchfork",
+    "description": "Pitchfork Emporium's Finest",
+    "price": 50
+  },
+  {
+    "id": "wpn_short_sword",
+    "name": "Short Sword",
+    "description": "A simple but functional weapon",
+    "price": 200
+  },
+  {
+    "id": "wpn_simple_staff",
+    "name": "Simple Staff",
+    "description": "A simple but functional weapon",
+    "price": 200
+  }
+]

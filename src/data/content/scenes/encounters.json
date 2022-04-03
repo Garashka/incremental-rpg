@@ -1,0 +1,19 @@
+[
+  {
+    "id": "start_village_forest",
+    "enemies": [
+      {
+        "id": "lvl1_wild_dog",
+        "count": 1
+      },
+      {
+        "id": "lvl1_boar",
+        "count": 1
+      },
+      {
+        "id": "lvl1_large_rat",
+        "count": 2
+      }
+    ]
+  }
+]

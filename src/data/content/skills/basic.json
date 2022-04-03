@@ -1,0 +1,108 @@
+[
+  {
+    "id": "basic_attack",
+    "name": "Attack",
+    "cost": [
+      {
+        "attribute": "actionPoints",
+        "operator": "-",
+        "magnitude": 1
+      }
+    ],
+    "validTargets": ["notSelf"],
+    "effects": [
+      {
+        "target": "target",
+        "type": "modifier",
+        "modifier": {
+          "attribute": "health",
+          "operator": "+",
+          "magnitude": {
+            "base": "weaponDamage",
+            "type": "flat"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "basic_stun",
+    "name": "Stun",
+    "cost": [
+      {
+        "attribute": "modifier",
+        "operator": "-",
+        "magnitude": 1
+      }
+    ],
+    "validTargets": ["notSelf"],
+    "effects": [
+      {
+        "target": "target",
+        "type": "status",
+        "duration": 1,
+        "status": ["stunned"]
+      }
+    ]
+  },
+  {
+    "id": "pommel_strike",
+    "name": "Pommel Strike",
+    "cost": [
+      {
+        "attribute": "actionPoint",
+        "operator": "-",
+        "magnitude": 1
+      }
+    ],
+    "validTargets": ["notSelf"],
+    "effects": [
+      {
+        "target": "target",
+        "type": "modifier",
+        "modifier": {
+          "attribute": "health",
+          "operator": "+",
+          "magnitude": {
+            "base": "weaponDamage",
+            "type": "flat"
+          }
+        }
+      },
+      {
+        "target": "target",
+        "type": "status",
+        "status": "stunned",
+        "duration": 1
+      }
+    ]
+  },
+  {
+    "id": "parry",
+    "name": "Parry",
+    "cost": [
+      {
+        "attribute": "actionPoint",
+        "operator": "-",
+        "magnitude": 1
+      }
+    ],
+    "validTargets": ["self"],
+    "effects": [
+      {
+        "target": "self",
+        "type": "script",
+        "duration": 1,
+        "script": {
+          "type": "parry",
+          "args": {
+            "damage": {
+              "base": "weaponDamage",
+              "type": "flat"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

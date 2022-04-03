@@ -1,0 +1,11 @@
+[
+  {
+    "id": "human",
+    "name": "Human",
+    "description": "The most common of humanoids across this continent. They are considered average in every way.",
+    "allowedGenders": ["Male", "Female"],
+    "effects": {
+      "text": "No perks or flaws."
+    }
+  }
+]
