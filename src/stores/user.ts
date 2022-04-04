@@ -28,7 +28,7 @@ export const useUserStore = defineStore({
   },
   getters: {
     isNewUser(state) {
-      return state.playerCharacter === null;
+      return state.playerCharacter === undefined;
     },
     playerName(state) {
       return state.playerCharacter?.name || '';

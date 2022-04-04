@@ -1,3 +1,4 @@
+import { ISceneEncounterDataModel } from './encounter';
 import _scenes from 'data/content/scenes/scenes.json';
 import { ESceneType } from 'src/utils/enum';
 
@@ -31,16 +32,16 @@ interface ITwisonPassageModel extends ISceneDeserializer {
   };
 }
 
-export interface ISceneInstance {
+export interface ISceneInstance extends ISceneDeserializer {
   name: string | null;
   title: string;
   text: string;
   links: ITwisonLink[];
   type: ESceneType;
-  data: Record<string, string>;
+  data: Record<string, string[]>;
 }
 
-class Scene implements ISceneInstance {
+export class Scene implements ISceneInstance {
   pid: string;
   type: ESceneType = ESceneType.DIALOGUE;
   name: string | null = null;
@@ -48,7 +49,7 @@ class Scene implements ISceneInstance {
   text: string;
   links: ITwisonLink[];
   tags: string[] = [];
-  data: Record<string, string> = {};
+  data: Record<string, string[]> = {};
 
   constructor(data: ITwisonPassageModel) {
     this.pid = data.pid;
@@ -56,14 +57,12 @@ class Scene implements ISceneInstance {
     this.links = data.links;
     this.text = data.cleanText;
 
-    this.initTags(data.tags);
-
-    if (this.data.name) {
-      this.name = this.data.name;
+    if (data.tags) {
+      this.initialiseTags(data.tags);
     }
   }
 
-  private initTags(modelTags: string[]) {
+  private initialiseTags(modelTags: string[]) {
     modelTags.forEach((tag) => {
       if (tag.indexOf(':') === -1) {
         this.tags.push(tag);
@@ -74,18 +73,28 @@ class Scene implements ISceneInstance {
       if (Object.prototype.hasOwnProperty.call(this.data, key)) {
         throw `Duplicate key '${key}' in scene data ${this.pid}`;
       }
-      this.data[key] = val;
+      this.data[key] ? this.data[key].push(val) : (this.data[key] = [val]);
     });
 
     if (Object.prototype.hasOwnProperty.call(this.data, 'scene')) {
-      this.type = this.data['scene'] as ESceneType;
+      if (this.data.scene.length > 1) {
+        throw `Too many keys of type 'scene' in scene data ${this.pid}`;
+      }
+      this.type = this.data['scene'][0] as ESceneType;
       delete this.data['scene'];
     }
 
     if (Object.prototype.hasOwnProperty.call(this.data, 'id')) {
-      this.name = this.data['id'];
+      if (this.data.id.length > 1) {
+        throw `Too many keys of type 'scene' in scene data ${this.pid}`;
+      }
+      this.name = this.data['id'][0];
       delete this.data['id'];
     }
+  }
+
+  toJSON(): ISceneDeserializer {
+    return { pid: this.pid };
   }
 }
 
@@ -105,6 +114,14 @@ const scenesByName = {} as Record<string, Scene>;
     scenesByName[scene.name] = scene;
   }
 });
+
+export class SceneNotFoundError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'SceneNotFoundError';
+  }
+}
+
 /**
  * Used to navigate programmatically between scenes
  *
@@ -114,7 +131,7 @@ const scenesByName = {} as Record<string, Scene>;
 export function getSceneById(pid: string): Scene {
   const scene = scenesById[pid];
   if (!scene) {
-    throw `No scene data model found for '${pid}'`;
+    throw new SceneNotFoundError(`No scene data model found for '${pid}'`);
   }
   return scene;
 }

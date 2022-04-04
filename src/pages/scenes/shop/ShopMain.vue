@@ -1,5 +1,5 @@
 <template>
-  <q-card class="col-xl-6 q-page-child">
+  <q-card class="col-md-6 q-page-child">
     <q-card-section>
       <div class="text-h6">{{ sceneStore.title }}</div>
     </q-card-section>

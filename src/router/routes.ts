@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/scenes/SceneFrame.vue'),
         children: [
           {
-            path: 'common',
+            path: 'dialogue',
             component: () => import('pages/scenes/common/SceneCommon.vue'),
           },
           {
@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
             component: () => import('pages/scenes/shop/ShopMain.vue'),
           },
           {
-            path: 'wilderness',
+            path: 'exploration',
             component: () => import('pages/scenes/wilderness/WildernessMain.vue'),
           },
         ],

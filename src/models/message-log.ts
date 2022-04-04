@@ -1,4 +1,4 @@
-export default class MessageLogMessages {
+export default class MessageLog {
   items: MessageLogItem[];
   maxItems: number;
   currKey: number;
@@ -16,6 +16,10 @@ export default class MessageLogMessages {
 
     this.items.push(new MessageLogItem(message, this.currKey));
     this.currKey += 1;
+  }
+
+  clear() {
+    this.items = [];
   }
 }
 

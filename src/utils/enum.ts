@@ -13,3 +13,7 @@ export enum ESceneType {
   SHOP = 'shop',
   OTHER = 'other',
 }
+
+export enum EEncounterType {
+  COMBAT = 'combat',
+}

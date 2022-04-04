@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 import router from 'src/router';
 
-import { getSceneById, getSceneByName, IScene } from 'src/models/scenes/scenes';
+import { getSceneById, getSceneByName, Scene } from 'src/models/scenes/scenes';
 
 export interface SceneState {
   sceneId: string;
-  sceneData: IScene | null;
+  sceneData: Scene | null;
   previousId: string;
 }
 
@@ -20,7 +20,7 @@ export const useSceneStore = defineStore({
   persist: {
     paths: ['sceneId', 'previousId'],
     afterRestore: (context) => {
-      if (context.store.scene !== '') {
+      if (context.store.sceneId !== '') {
         context.store.setSceneById(context.store.sceneId);
       }
     },
@@ -41,10 +41,14 @@ export const useSceneStore = defineStore({
   },
   actions: {
     setSceneById(sceneId: string) {
-      const sceneData = getSceneById(sceneId);
+      try {
+        const sceneData = getSceneById(sceneId);
 
-      if (sceneData) {
-        this.setScene(sceneData);
+        if (sceneData) {
+          this.setScene(sceneData);
+        }
+      } catch (err) {
+        console.error(err);
       }
     },
     setSceneByName(sceneName: string) {
@@ -54,13 +58,13 @@ export const useSceneStore = defineStore({
         this.setScene(sceneData);
       }
     },
-    setScene(sceneData: IScene) {
+    setScene(sceneData: Scene) {
       this.previousId = this.sceneId;
       this.sceneId = sceneData.pid;
       this.sceneData = sceneData;
 
-      if (sceneData.scene) {
-        router.push(`/scene/${sceneData.scene}`);
+      if (sceneData.type) {
+        router.push(`/scene/${sceneData.type}`);
       }
     },
     goToPrevious() {
@@ -74,8 +78,8 @@ export const useSceneStore = defineStore({
       this.sceneData = previousScene;
       this.previousId = '';
 
-      if (previousScene?.scene) {
-        router.push(`/scene/${previousScene.scene}`);
+      if (previousScene?.type) {
+        router.push(`/scene/${previousScene.type}`);
       }
     },
   },

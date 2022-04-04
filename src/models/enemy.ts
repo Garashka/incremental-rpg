@@ -1,3 +1,4 @@
+import { ICombatEncounter } from './scenes/encounter';
 import _enemies from 'data/content/enemies.json';
 import { sample } from 'src/utils/array';
 
@@ -31,6 +32,8 @@ export class EnemyCharacter implements IEnemyInstance {
   id: string;
   dataModel: IEnemyDataModel;
   name: string;
+  adjective: string;
+  fullName: string;
   health: number;
   maxHealth: number;
 
@@ -39,9 +42,11 @@ export class EnemyCharacter implements IEnemyInstance {
 
     this.id = dataModel.id;
     this.dataModel = dataModel;
-    this.name = sample(dataModel.adjectives) + dataModel.name;
+    this.adjective = sample(dataModel.adjectives);
+    this.name = dataModel.name;
     this.health = dataModel.health;
     this.maxHealth = this.health;
+    this.fullName = `${this.adjective} ${this.name}`;
   }
 
   toJSON(): IEnemyDeserializer {
@@ -63,4 +68,18 @@ export function getEnemyById(id: string): IEnemyDataModel {
   }
 
   return enemy;
+}
+
+export function createEnemiesById(id: string, count = 1): EnemyCharacter[] {
+  const enemies = [];
+  for (let i = 0; i < count; i++) {
+    enemies.push(new EnemyCharacter({ id }));
+  }
+  return enemies;
+}
+
+export function createEnemiesByEncounter(encounterData: ICombatEncounter): EnemyCharacter[] {
+  return encounterData.enemies.reduce((acc, curr) => {
+    return [...acc, ...createEnemiesById(curr.id, curr.count)];
+  }, [] as EnemyCharacter[]);
 }

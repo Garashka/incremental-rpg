@@ -1,18 +1,46 @@
 [
   {
     "id": "start_village_forest",
-    "enemies": [
+    "encounters": [
       {
-        "id": "lvl1_wild_dog",
-        "count": 1
+        "type": "combat",
+        "enemies": [
+          {
+            "id": "lvl1_wild_dog",
+            "count": 1
+          }
+        ]
       },
       {
-        "id": "lvl1_boar",
-        "count": 1
+        "type": "combat",
+        "enemies": [
+          {
+            "id": "lvl1_boar",
+            "count": 1
+          }
+        ]
       },
       {
-        "id": "lvl1_large_rat",
-        "count": 2
+        "type": "combat",
+        "enemies": [
+          {
+            "id": "lvl1_large_rat",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "type": "combat",
+        "enemies": [
+          {
+            "id": "lvl1_locust_swarm",
+            "count": 1
+          },
+          {
+            "id": "lvl1_giant_dung_beetle",
+            "count": 1
+          }
+        ]
       }
     ]
   }

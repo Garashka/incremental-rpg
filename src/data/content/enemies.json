@@ -37,5 +37,31 @@
     "behaviour": {
       "attack": 100
     }
+  },
+  {
+    "id": "lvl1_giant_dung_beetle",
+    "name": "giant dung beetle",
+    "description": "",
+    "level": 1,
+    "adjectives": ["filthy", "large", "scary"],
+    "health": 20,
+    "minDmg": 6,
+    "maxDmg": 14,
+    "behaviour": {
+      "attack": 100
+    }
+  },
+  {
+    "id": "lvl1_locust_swarm",
+    "name": "locust swarm",
+    "description": "",
+    "level": 1,
+    "adjectives": ["filthy", "large", "scary"],
+    "health": 60,
+    "minDmg": 2,
+    "maxDmg": 8,
+    "behaviour": {
+      "attack": 100
+    }
   }
 ]
