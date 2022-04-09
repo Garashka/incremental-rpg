@@ -1,18 +1,21 @@
 import { defineStore } from 'pinia';
-import { Character, ICharacterDataModel } from 'src/models/character/character';
+import { Character, ICharacterDataModel } from 'models/character/player/player-character';
 
 export interface UserState {
   playerCharacter?: Character;
   gold: number;
+  isDebugMode: boolean;
 }
 
 export const useUserStore = defineStore({
   id: 'user',
 
-  state: (): UserState => ({
-    gold: 0,
-    playerCharacter: undefined,
-  }),
+  state: (): UserState =>
+    ({
+      gold: 0,
+      playerCharacter: undefined,
+      isDebugMode: true,
+    } as UserState),
   persist: {
     serializer: {
       serialize: JSON.stringify,
@@ -32,6 +35,12 @@ export const useUserStore = defineStore({
     },
     playerName(state) {
       return state.playerCharacter?.name || '';
+    },
+    getCharacter(state): Character {
+      if (!state.playerCharacter) {
+        throw new Error('No player character found');
+      }
+      return state.playerCharacter as Character;
     },
   },
   actions: {

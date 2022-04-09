@@ -8,6 +8,7 @@ import { CharacterAttributeSet } from 'models/skill-system/attribute';
 import defaultAttributes from 'data/content/character/attributes.json';
 import { isString } from 'src/utils/common';
 import { getSkillById, Skill } from 'models/skill-system/skill';
+import { CharacterBase } from 'models/character/character-base';
 
 export interface ICharacterDataModel {
   name: string;
@@ -15,7 +16,7 @@ export interface ICharacterDataModel {
   characterClass: ICharacterClassDataModel | string;
 }
 
-export class Character {
+export class Character extends CharacterBase {
   name: string;
   attributes: CharacterAttributeSet;
   race: CharacterRace;
@@ -24,6 +25,8 @@ export class Character {
   effects: [];
 
   constructor(data: ICharacterDataModel) {
+    super({ isPlayerCharacter: true });
+
     this.name = data.name;
     this.attributes = new CharacterAttributeSet(defaultAttributes);
 
@@ -59,5 +62,32 @@ export class Character {
 
   getSkills() {
     return Object.values(this.skills);
+  }
+
+  canAffordSkill(skill: Skill) {
+    // TODO: Other operators
+    for (const cost of skill.cost) {
+      const { attribute: attribId, magnitude } = cost;
+      const { current } = this.attributes.get(attribId);
+
+      if (current < magnitude) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  useSkill(skill: Skill, target: CharacterBase) {
+    if (this.canAffordSkill(skill)) {
+      skill.execute(this, target);
+    }
+  }
+
+  get actionPoints() {
+    return this.attributes.actionPoints.current;
+  }
+
+  get maxActionPoints() {
+    return this.attributes.maxActionPoints.current;
   }
 }

@@ -9,6 +9,9 @@
         <ActionBar v-if="userStore.playerCharacter" :character="userStore.playerCharacter" />
       </div>
     </q-card-section>
+    <q-card-section v-if="showDebug">
+      <CombatDebugInfo />
+    </q-card-section>
   </q-card>
 </template>
 
@@ -16,25 +19,27 @@
 import { defineComponent } from 'vue';
 import { useSceneStore } from 'src/stores/scene';
 import { useUserStore } from 'src/stores/user';
-import { useBattleStore } from 'src/stores/battle';
 import MessageLog from 'src/components/MessageLog.vue';
 import ActionBar from 'src/components/combat/ActionBar.vue';
+import CombatDebugInfo from 'src/components/debug/CombatDebugInfo.vue';
 import { useBattleLog } from 'src/composable/BattleLog';
+import { useBattleController } from 'src/composable/BattleController';
 
 export default defineComponent({
-  components: { MessageLog, ActionBar },
+  components: { MessageLog, ActionBar, CombatDebugInfo },
   setup() {
     const sceneStore = useSceneStore();
     const userStore = useUserStore();
-    const battleStore = useBattleStore();
+    const battleController = useBattleController();
     const { battleLog } = useBattleLog();
 
-    battleStore.startBattle();
+    battleController.startBattle();
 
     return {
       battleLog,
       sceneStore,
       userStore,
+      showDebug: userStore.isDebugMode,
     };
   },
 });

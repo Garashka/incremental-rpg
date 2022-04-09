@@ -138,11 +138,14 @@
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue';
 import { QStepper, QInput } from 'quasar';
-import { ICharacterRaceDataModel, races } from 'src/models/character/races';
-import { characterClasses, ICharacterClassDataModel } from 'src/models/character/character-classes';
+import { ICharacterRaceDataModel, races } from 'src/models/character/player/races';
+import {
+  characterClasses,
+  ICharacterClassDataModel,
+} from 'src/models/character/player/character-classes';
 import { useUserStore } from 'stores/user';
 import { useSceneStore } from 'src/stores/scene';
-import { Character } from 'src/models/character/character';
+import { Character } from 'src/models/character/player/player-character';
 
 export default defineComponent({
   setup() {

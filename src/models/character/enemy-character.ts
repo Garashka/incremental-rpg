@@ -1,6 +1,9 @@
-import { ICombatEncounter } from './scenes/encounter';
+import { EnemyAttributeSet } from 'models/skill-system/attribute';
+import { CharacterBase } from 'models/character/character-base';
+import { ICombatEncounter } from 'models/scenes/encounter';
 import _enemies from 'data/content/enemies.json';
 import { sample } from 'src/utils/array';
+import { Skill } from 'models/skill-system/skill';
 
 // Should map to properties in class toJSON function for deserializing
 export interface IEnemyDeserializer {
@@ -24,29 +27,32 @@ export interface IEnemyInstance extends IEnemyDeserializer {
   // TODO: Confirm this shares a single object reference
   dataModel: IEnemyDataModel;
   name: string;
-  health: number;
-  maxHealth: number;
 }
 
-export class EnemyCharacter implements IEnemyInstance {
+export class EnemyCharacter extends CharacterBase implements IEnemyInstance {
+  attributes: EnemyAttributeSet;
   id: string;
   dataModel: IEnemyDataModel;
   name: string;
   adjective: string;
   fullName: string;
-  health: number;
-  maxHealth: number;
 
   constructor(data: IEnemyDeserializer) {
+    super({ isPlayerCharacter: false });
+
     const dataModel = getEnemyById(data.id);
 
     this.id = dataModel.id;
     this.dataModel = dataModel;
     this.adjective = sample(dataModel.adjectives);
     this.name = dataModel.name;
-    this.health = dataModel.health;
-    this.maxHealth = this.health;
     this.fullName = `${this.adjective} ${this.name}`;
+
+    this.attributes = new EnemyAttributeSet({ health: dataModel.health, actionPoints: 0 });
+  }
+
+  useSkill(skill: Skill, target: CharacterBase) {
+    skill.execute(this, target);
   }
 
   toJSON(): IEnemyDeserializer {

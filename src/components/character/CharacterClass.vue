@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { CharacterClass } from 'src/models/character/character-classes';
+import { CharacterClass } from 'src/models/character/player/character-classes';
 
 export default defineComponent({
   props: {

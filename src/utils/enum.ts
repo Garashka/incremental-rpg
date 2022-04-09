@@ -3,6 +3,7 @@ export enum Operator {
   MULTIPLY = '*',
   SUBTRACT = '-',
   DIVIDE = '/',
+  SET = '=',
 }
 
 export enum ESceneType {
